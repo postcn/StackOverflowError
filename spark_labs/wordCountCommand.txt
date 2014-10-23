@@ -1,0 +1,3 @@
+spark-submit wordCount.py <input> <output>
+
+--Input and Output must be full hdfs paths.
