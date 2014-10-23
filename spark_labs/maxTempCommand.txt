@@ -1,0 +1,1 @@
+spark-submit maxTemp.py hdfs://hadoop04.csse.rose-hulman.edu/user/root/LabResearch/temperatureSample.txt hdfs://hadoop04.csse.rose-hulman.edu/user/root/LabResearch/maxTempOutput
