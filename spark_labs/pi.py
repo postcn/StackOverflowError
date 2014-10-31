@@ -4,7 +4,7 @@ from random import random
 
 def calculate_pi(sample_count):
     sc = SparkContext(appName="PiPy")
-    samples = float(sc.parallelize(xrange(sample_count)).map(sample).reduce(lambda x, y: x + y))
+    samples = float(sc.parallelize(xrange(sample_count)).map(sample).sum())
     print "\nPi is approximately", 4 * (samples / sample_count)
 
 def sample(n):
