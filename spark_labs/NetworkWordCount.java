@@ -22,13 +22,11 @@ public final class NetworkWordCount {
 
   public static void main(String[] args) {
     if (args.length < 2) {
-      System.err.println("Usage: JavaNetworkWordCount <hostname> <port>");
+      System.err.println("Usage: NetworkWordCount <hostname> <port>");
       System.exit(1);
     }
 
-    //StreamingExamples.setStreamingLogLevels();
-
-    // Create the context with a 1 second batch size
+    // Create the context with a 10 second batch size
     SparkConf sparkConf = new SparkConf().setAppName("JavaNetworkWordCount");
     JavaStreamingContext ssc = new JavaStreamingContext(sparkConf,  new Duration(1000));
 
