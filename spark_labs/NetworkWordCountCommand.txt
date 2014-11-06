@@ -1,0 +1,5 @@
+#Terminal 1
+nc -lk 9999
+
+#Terminal 2
+run-example streaming.NetworkWordCount localhost 9999
