@@ -1,25 +1,19 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Test {
 
 	public static void main(String[] args) {
-		Connection c = Backend.getDatabaseConnection();
-		Statement s;
-		try {
-			s = c.createStatement();
-			ResultSet r = s.executeQuery("SHOW DATABASES");
-			while(r.next()) {
-				System.out.println(r.getString(0));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Backend b = Backend.getInstance();
+		ArrayList<String> tags = new ArrayList<String>();
+		tags.add(".net");
+		tags.add("c");
+		tags.add("b");
+		tags.add("Ed Goldthorpe");
+		List<Tag> res = b.getTags(tags);
+		for (Tag t: res) {
+			System.out.println(t.toString());
 		}
-		
 	}
-
 }

@@ -4,47 +4,44 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class TagTrie {
 	private Node root;
 	private LinkedList<String> suggestions;
-
+	
 	public TagTrie() {
 		this.root = new Node("");
 		this.suggestions = new LinkedList<String>();
+		List<String> tags = Backend.getAllTagNames();
+		Iterator<String> iter = tags.iterator();
+		while(iter.hasNext()) {
+			String line = iter.next().toLowerCase();
+			Node node = this.root, n;
+			String c;
+			int i = 0;
 
-		try (BufferedReader reader = Files.newBufferedReader(
-				Paths.get("tagnames.txt"), Charset.forName("UTF-8"))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				line = line.trim().toLowerCase();
-				Node node = this.root, n;
-				String c;
-				int i = 0;
-
-				while (i < line.length()) {
-					n = null;
-					c = line.substring(i, ++i);
-					for (Node child: node.children) {
-						if (child.equals(c)) {
-							n = child;
-							break;
-						}
-					}
-
-					if (n != null) {
-						node = n;
-					} else {
-						Node t = new Node(c);
-						node.children.add(t);
-						node = t;
+			while (i < line.length()) {
+				n = null;
+				c = line.substring(i, ++i);
+				for (Node child: node.children) {
+					if (child.equals(c)) {
+						n = child;
+						break;
 					}
 				}
-				node.word = line;
+
+				if (n != null) {
+					node = n;
+				} else {
+					Node t = new Node(c);
+					node.children.add(t);
+					node = t;
+				}
 			}
-		} catch (IOException e) {
-			System.out.println("Unable to open text file with tag names.");
+			node.word = line;
 		}
 	}
 
