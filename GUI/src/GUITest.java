@@ -36,9 +36,9 @@ public class GUITest
 		
 		loadingFrame.add(loadingPanel);
 		loadingFrame.setVisible(true);
-		Backend b = Backend.getInstance();
+		Backend.getInstance();
 		loadingFrame.setVisible(false);
-		StackOverflowFrame frame = new StackOverflowFrame(b);
+		StackOverflowFrame frame = new StackOverflowFrame();
 		frame.setVisible(true);
 	}
 
