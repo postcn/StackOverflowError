@@ -36,10 +36,10 @@ public class StackOverflowFrame extends JFrame
 		backEnd = Backend.getInstance();
 		ImageIcon img = new ImageIcon("images/StackOverflowIcon.png");
 		this.setIconImage(img.getImage());
-		this.setSize(new Dimension(1200,1000));
+		this.setSize(new Dimension(1400,1000));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Stack Overflow");
-		this.setResizable(false);
+		//this.setResizable(false);
 		selected = new LinkedList<String>();
 		setLocationRelativeTo(null);
 		
